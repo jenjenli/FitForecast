@@ -1,0 +1,37 @@
+#weather-box {
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  #appname {
+    text-align: center;
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  #weather-info p {
+    font-size: 1.2em;
+    margin: 0;
+  }
+  
+  #clothing-recommendation {
+    font-size: 1em;
+    margin-top: 15px;
+    color: #555;
+  }
+  #weatherChart {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+  }
+  
