@@ -1,26 +1,40 @@
 // Add event listeners to all buttons with preference-btn class
-const buttons = document.querySelectorAll('.preference-btn');
-
-buttons.forEach(button => {
-    button.addEventListener('click', function() {
-        // Toggle the 'selected' class for the clicked button
-        this.classList.toggle('selected');
+// Add event listeners to all buttons with the "preference-btn" class
+document.querySelectorAll(".preference-btn").forEach(button => {
+    button.addEventListener("click", function() {
+        // Toggle the button's "selected" state (or add/remove class)
+        button.classList.toggle("selected");
     });
 });
 
-// Handle save preferences button click
+// When "Save Preferences" button is clicked, save selected preferences
 document.getElementById("savePreferencesBtn").addEventListener("click", function() {
-    // Collect selected preferences
-    const selectedPreferences = [];
-    
-    buttons.forEach(button => {
-        if (button.classList.contains('selected')) {
-            selectedPreferences.push(button.id);  // Collect the button's ID
-        }
-    });
+    // Collect preferences based on which buttons are selected
+    const preferences = {
+        sensitivity: [],
+        healthConditions: [],
+        preferredWeather: []
+    };
 
-    // Log the selected preferences
-    console.log('Selected Preferences:', selectedPreferences);
+    // Example of collecting preferences based on selected buttons
+    if (document.getElementById("sensitive-cold").classList.contains("selected")) {
+        preferences.sensitivity.push("Sensitive to Cold");
+    }
+    if (document.getElementById("sensitive-heat").classList.contains("selected")) {
+        preferences.sensitivity.push("Sensitive to Heat");
+    }
+    if (document.getElementById("sensitive-light").classList.contains("selected")) {
+        preferences.sensitivity.push("Sensitive to Light");
+    }
+    // Repeat for other categories like "healthConditions" and "preferredWeather"
 
-    // You can add further code here to save preferences, such as sending them to a server
+    // Save preferences to localStorage under the current username
+    const username = localStorage.getItem("currentUser");
+    const allPreferences = JSON.parse(localStorage.getItem("userPreferences")) || {};
+    allPreferences[username] = preferences;
+    localStorage.setItem("userPreferences", JSON.stringify(allPreferences));
+
+    // Redirect to the weather page after saving preferences
+    window.location.href = "../weatherPage/index.html";
 });
+

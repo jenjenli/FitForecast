@@ -9,6 +9,8 @@ const getLocationName = async (lat, lon) => {
   return formatLocationName(data);
 };
 
+
+
 const formatLocationName = (data) => {
   const { address } = data;
   const city = address.city || address.town || address.village || '';
@@ -82,30 +84,50 @@ class WeatherApp {
     document.getElementById("weather-info").innerHTML = `<p>${description}, ${temperature}°C</p>`;
   }
 
+  getUserPreferences() {
+    const username = localStorage.getItem("currentUser");
+    console.log(username);
+    const allPreferences = JSON.parse(localStorage.getItem("userPreferences")) || {};
+    return allPreferences[username] || {};
+  }
+  
   getClothingRecommendation(data) {
+    const preferences = this.getUserPreferences(); // Retrieve user preferences
     const temp = data.current_weather.temperature;
     const weathercode = data.current_weather.weathercode;
     const windSpeed = data.current_weather.windspeed;
-
+  
     let recommendation = "Wear something comfortable!";
-
-    if (temp < 10) {
+    
+    // Check for temperature sensitivities
+    if (preferences.sensitivity && preferences.sensitivity.includes("Sensitive to Cold") && temp < 15) {
+      recommendation = "Since you're sensitive to cold, wear a warm jacket and layers.";
+    } else if (temp < 10) {
       recommendation = "It's cold! Wear a warm jacket, scarf, and gloves.";
-      if (windSpeed > 20) {
-        recommendation += " Windy too, consider a windbreaker!";
-      }
     } else if (temp < 20) {
       recommendation = "It's a bit chilly. A light jacket should be enough.";
     } else if (temp > 30) {
       recommendation = "It's hot! Wear light, breathable clothing.";
     }
-
+  
+    // Modify recommendation based on weather conditions
     if ([61, 63, 65, 80, 81, 82].includes(weathercode)) {
       recommendation += " Don't forget an umbrella!";
     }
-
+  
+    // Check health-related conditions for additional recommendations
+    if (preferences.healthConditions && preferences.healthConditions.includes("Asthma") && windSpeed > 15) {
+      recommendation += " High wind detected - consider limiting outdoor exposure due to asthma.";
+    }
+  
+    // Add wind sensitivity check
+    if (preferences.sensitivity && preferences.sensitivity.includes("Sensitive to Wind") && windSpeed > 20) {
+      recommendation += " It's windy, so bundle up to protect yourself from the chill.";
+    }
+  
     document.getElementById("clothing-recommendation").innerText = recommendation;
   }
+  
 
   renderWeatherChart(data) {
     const labels = data.hourly.time.slice(0, 24);
