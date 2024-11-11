@@ -19,9 +19,21 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
 
-            <button type="submit">Sign Up</button>
+            <button id="submit">Sign Up</button>
         </form>
         <p>Already have an account? <a href="../Login/login.html">Login here</a></p>
     </div>
 </body>
+<script>
+    // Get the Sign Up button by its ID
+    const signUpButton = document.getElementById("signUpBtn");
+
+    // Add an event listener for the click event
+    signUpButton.addEventListener("click", function() {
+        // Redirect to the preferences page when the button is clicked
+        window.location.href = "../perfernces/preferences.html"; // Replace with the correct URL for your preferences page
+    });
+</script>
+</body>
+</html>
 </html>
