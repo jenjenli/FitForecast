@@ -38,10 +38,15 @@
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
-            // Validation checks (can be expanded)
+            // Validation checks
             if (username && email && password) {
-                // If all fields are filled, redirect to the preferences page
-                window.location.href = "../perfernces/preferences.html";
+                // Store the user details in localStorage
+                localStorage.setItem("username", username);
+                localStorage.setItem("email", email);
+                localStorage.setItem("password", password);
+
+                // Redirect to preferences page
+                window.location.href = "../preferences/preferences.html";
             } else {
                 // If any field is empty, alert the user
                 alert("Please fill in all fields.");
