@@ -1,4 +1,6 @@
 // Wait for the DOM content to load before executing the script
+console.log(localStorage);
+
 document.addEventListener("DOMContentLoaded", function() {
   // Get the login button
   const loginButton = document.getElementById("login-button");

@@ -13,12 +13,12 @@ document.getElementById("savePreferencesBtn").addEventListener("click", function
             heat: document.getElementById("sensitive-heat").classList.contains("selected"),
             light: document.getElementById("sensitive-light").classList.contains("selected"),
         },
-        healthConditions: {
+        health: {
             asthma: document.getElementById("asthma").classList.contains("selected"),
             skinCondition: document.getElementById("skin-condition").classList.contains("selected"),
             jointPain: document.getElementById("joint-pain").classList.contains("selected"),
         },
-        preferredWeather: {
+        preferred: {
             cold: document.getElementById("cold-weather").classList.contains("selected"),
             hot: document.getElementById("hot-weather").classList.contains("selected"),
             moderate: document.getElementById("moderate-weather").classList.contains("selected"),
@@ -26,9 +26,10 @@ document.getElementById("savePreferencesBtn").addEventListener("click", function
     };
 
     // Assuming username is stored in localStorage from the signup process
-    const username = localStorage.getItem("username");
+    const username = localStorage.getItem("storedUsername");
 
     if (username) {
+        // Save the preferences using the username as the key
         localStorage.setItem(`preferences-${username}`, JSON.stringify(preferences));
 
         // Redirect to the weather page after saving preferences
