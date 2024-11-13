@@ -41,9 +41,14 @@
             // Validation checks
             if (username && email && password) {
                 // Store the user details in localStorage
-                localStorage.setItem("username", username);
-                localStorage.setItem("email", email);
-                localStorage.setItem("password", password);
+                localStorage.setItem("storedUsername", username);
+                localStorage.setItem("storedEmail", email);
+                localStorage.setItem("storedPassword", password);
+
+                // Console log to confirm storage
+                console.log("Username stored:", localStorage.getItem("storedUsername"));
+                console.log("Email stored:", localStorage.getItem("storedEmail"));
+                console.log("Password stored:", localStorage.getItem("storedPassword"));
 
                 // Redirect to preferences page
                 window.location.href = "../preferences/preferences.html";

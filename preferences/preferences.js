@@ -32,7 +32,7 @@ document.getElementById("savePreferencesBtn").addEventListener("click", function
         localStorage.setItem(`preferences-${username}`, JSON.stringify(preferences));
 
         // Redirect to the weather page after saving preferences
-        window.location.href = "../weatherPage/index.html"; // Adjust the URL as needed
+        window.location.href = "../login/login.html"; // Adjust the URL as needed
     } else {
         alert("No user is logged in.");
     }
