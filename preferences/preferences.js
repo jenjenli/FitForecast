@@ -1,3 +1,11 @@
+// Add event listeners to toggle the "selected" class on the buttons
+document.querySelectorAll(".preference-btn").forEach(button => {
+    button.addEventListener("click", function() {
+        // Toggle the "selected" class when a button is clicked
+        button.classList.toggle("selected");
+    });
+});
+
 document.getElementById("savePreferencesBtn").addEventListener("click", function() {
     const preferences = {
         sensitivity: {
@@ -22,6 +30,9 @@ document.getElementById("savePreferencesBtn").addEventListener("click", function
 
     if (username) {
         localStorage.setItem(`preferences-${username}`, JSON.stringify(preferences));
+
+        // Redirect to the weather page after saving preferences
+        window.location.href = "../weatherPage/index.html"; // Adjust the URL as needed
     } else {
         alert("No user is logged in.");
     }
