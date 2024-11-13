@@ -1,5 +1,6 @@
 // Wait for the DOM content to load before executing the script
 console.log(localStorage);
+console.log(localStorage.getItem("storedUsername"));
 
 document.addEventListener("DOMContentLoaded", function() {
   // Get the login button

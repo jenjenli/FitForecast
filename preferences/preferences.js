@@ -27,7 +27,7 @@ document.getElementById("savePreferencesBtn").addEventListener("click", function
 
     // Assuming username is stored in localStorage from the signup process
     const username = localStorage.getItem("storedUsername");
-
+    console.log(username);
     if (username) {
         // Save the preferences using the username as the key
         localStorage.setItem(`preferences-${username}`, JSON.stringify(preferences));

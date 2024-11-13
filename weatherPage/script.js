@@ -85,10 +85,11 @@ class WeatherApp {
   }
 
   getUserPreferences() {
-    const username = localStorage.getItem("currentUser");
+    const username = localStorage.getItem("storedUsername");
     console.log(username);
-    const allPreferences = JSON.parse(localStorage.getItem("userPreferences")) || {};
-    return allPreferences[username] || {};
+    const allPreferences = JSON.parse(localStorage.getItem(`preferences-${username}`)) || {};
+    console.log(allPreferences);
+    return allPreferences;
   }
   
   getClothingRecommendation(data) {
@@ -100,9 +101,10 @@ class WeatherApp {
     let recommendation = "Wear something comfortable!";
     
     // Check for temperature sensitivities
-    if (preferences.sensitivity && preferences.sensitivity.includes("Sensitive to Cold") && temp < 15) {
+    if (preferences && preferences.sensitivity.cold && temp < 15) {
       recommendation = "Since you're sensitive to cold, wear a warm jacket and layers.";
     } else if (temp < 10) {
+      console.log(preferences.sensitivity.cold);
       recommendation = "It's cold! Wear a warm jacket, scarf, and gloves.";
     } else if (temp < 20) {
       recommendation = "It's a bit chilly. A light jacket should be enough.";
@@ -116,12 +118,12 @@ class WeatherApp {
     }
   
     // Check health-related conditions for additional recommendations
-    if (preferences.healthConditions && preferences.healthConditions.includes("Asthma") && windSpeed > 15) {
+    if (preferences && preferences.health.asthma && windSpeed > 15) {
       recommendation += " High wind detected - consider limiting outdoor exposure due to asthma.";
     }
   
     // Add wind sensitivity check
-    if (preferences.sensitivity && preferences.sensitivity.includes("Sensitive to Wind") && windSpeed > 20) {
+    if (windSpeed > 20) {
       recommendation += " It's windy, so bundle up to protect yourself from the chill.";
     }
   
