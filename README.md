@@ -19,7 +19,7 @@ Weather website aimed at helping individuals with cognitive disorders (eg. demen
 ## Technologies Used:
 -Frontend: HTML, CSS, JavaScript
 -Geolocation API: Used to detect the user's current location (latitude and longitude).
--Weather API: [Example: OpenWeatherMap or WeatherAPI] for fetching weather data based on the user’s location.
+-Weather API: Open-Meteo API for fetching weather data based on the user’s location.
 
 ## How to Run: 
   1. Enter https://jenjenli.github.io/FitForecast/Login/login.html into the browser
