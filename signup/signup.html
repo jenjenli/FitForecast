@@ -9,7 +9,6 @@
 <body>
     <div class="signup-container">
         <h2>Sign Up</h2>
-        <!-- Form for user signup -->
         <form id="signup-form">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
@@ -26,34 +25,25 @@
     </div>
 
     <script>
-        // Get the form element
         const signUpForm = document.getElementById("signup-form");
 
-        // Listen for the submit event on the form
         signUpForm.addEventListener("submit", function(event) {
-            event.preventDefault();  // Prevent the default form submission
-
-            // Get the form values
+            event.preventDefault();  
             const username = document.getElementById("username").value;
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
-            // Validation checks
             if (username && email && password) {
-                // Store the user details in localStorage
                 localStorage.setItem("storedUsername", username);
                 localStorage.setItem("storedEmail", email);
                 localStorage.setItem("storedPassword", password);
 
-                // Console log to confirm storage
                 console.log("Username stored:", localStorage.getItem("storedUsername"));
                 console.log("Email stored:", localStorage.getItem("storedEmail"));
                 console.log("Password stored:", localStorage.getItem("storedPassword"));
 
-                // Redirect to preferences page
                 window.location.href = "../preferences/preferences.html";
             } else {
-                // If any field is empty, alert the user
                 alert("Please fill in all fields.");
             }
         });

@@ -1,7 +1,10 @@
 const API_BASE_URL = 'https://api.open-meteo.com/v1/forecast';
 const NOMINATIM_BASE_URL = 'https://nominatim.openstreetmap.org/reverse';
 
-// Utility functions
+document.getElementById("changePreferencesBtn").addEventListener("click", function() {
+  window.location.href = "../preferences/preferences.html";  // Adjust the path based on your folder structure
+});
+
 const getLocationName = async (lat, lon) => {
   const url = `${NOMINATIM_BASE_URL}?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`;
   const response = await fetch(url);

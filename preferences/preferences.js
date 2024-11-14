@@ -1,7 +1,5 @@
-// Add event listeners to toggle the "selected" class on the buttons
 document.querySelectorAll(".preference-btn").forEach(button => {
     button.addEventListener("click", function() {
-        // Toggle the "selected" class when a button is clicked
         button.classList.toggle("selected");
     });
 });
@@ -25,15 +23,12 @@ document.getElementById("savePreferencesBtn").addEventListener("click", function
         }
     };
 
-    // Assuming username is stored in localStorage from the signup process
     const username = localStorage.getItem("storedUsername");
     console.log(username);
     if (username) {
-        // Save the preferences using the username as the key
         localStorage.setItem(`preferences-${username}`, JSON.stringify(preferences));
 
-        // Redirect to the weather page after saving preferences
-        window.location.href = "../login/login.html"; // Adjust the URL as needed
+        window.location.href = "../login/login.html"; 
     } else {
         alert("No user is logged in.");
     }
