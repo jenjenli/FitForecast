@@ -22,5 +22,6 @@ Weather website aimed at helping individuals with cognitive disorders (eg. demen
 -Weather API: Open-Meteo API for fetching weather data based on the user’s location.
 
 ## How to Run: 
-  1. Enter https://jenjenli.github.io/FitForecast/Login/login.html into the browser
-  2. There is a preset user: user123 and password: password123 if you do not want to create a new account
+  1. Copy the http into your terminal and store it locally
+  2. Press use live server to go live
+  3. Navigate to the login.html file under Login
